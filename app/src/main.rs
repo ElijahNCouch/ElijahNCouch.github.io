@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 mod demos;
 
 const CSS: &str = include_str!("../assets/style.css");
-const PFP: Asset = asset!("/assets/pfp.jpg");
+const PFP: &str = "/assets/pfp.jpg";
 const FAVICON: &str = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230071e3'/%3E%3Ctext x='50' y='69' font-family='-apple-system,Segoe UI,sans-serif' font-size='58' font-weight='600' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E";
 
 fn main() {

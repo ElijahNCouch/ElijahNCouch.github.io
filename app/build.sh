@@ -14,6 +14,10 @@ cp -R "$PUB/." "$ROOT/"
 find "$ROOT" -name '*.br' -delete
 touch "$ROOT/.nojekyll"
 
+# ensure the profile photo is at the stable /assets/pfp.jpg path the app references
+mkdir -p "$ROOT/assets"
+cp assets/pfp.jpg "$ROOT/assets/pfp.jpg"
+
 # inline the CSS into <head> so styling loads immediately (no runtime dependency, no FOUC)
 python3 - "$ROOT/index.html" "assets/style.css" <<'PY'
 import sys
