@@ -4,204 +4,264 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Elijah Couch — Selected Works</title>
-<meta name="description" content="Elijah Couch — Rust engineer building cross-platform systems and real-time graphics.">
+<meta name="description" content="Elijah Couch — Rust engineer building cross-platform systems, real-time graphics, and low-level tooling.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230071e3'/%3E%3Ctext x='50' y='69' font-family='-apple-system,Segoe UI,sans-serif' font-size='58' font-weight='600' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
 <style>
   :root{
-    --bg:#fbfbfd; --bg-2:#f5f5f7;
+    --bg:#fbfbfd; --bg-2:#f5f5f7; --bg-3:#ececed;
     --ink:#1d1d1f; --ink-soft:#424245; --muted:#6e6e73;
-    --line:#d2d2d7; --line-soft:#e8e8ed;
-    --accent:#0071e3;
+    --line:#d2d2d7; --line-soft:#e4e4e9;
+    --accent:#0071e3; --accent-soft:rgba(0,113,227,.12);
     --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,"JetBrains Mono",Consolas,monospace;
   }
   :root[data-theme="dark"]{
-    --bg:#000000; --bg-2:#0d0d0f;
+    --bg:#000; --bg-2:#0e0e10; --bg-3:#161618;
     --ink:#f5f5f7; --ink-soft:#c7c7cc; --muted:#86868b;
-    --line:#2a2a2c; --line-soft:#1c1c1e;
-    --accent:#2997ff;
+    --line:#2a2a2c; --line-soft:#202022;
+    --accent:#2997ff; --accent-soft:rgba(41,151,255,.14);
   }
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --bg:#000000; --bg-2:#0d0d0f;
-      --ink:#f5f5f7; --ink-soft:#c7c7cc; --muted:#86868b;
-      --line:#2a2a2c; --line-soft:#1c1c1e;
-      --accent:#2997ff;
-    }
-  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#000; --bg-2:#0e0e10; --bg-3:#161618;
+    --ink:#f5f5f7; --ink-soft:#c7c7cc; --muted:#86868b;
+    --line:#2a2a2c; --line-soft:#202022;
+    --accent:#2997ff; --accent-soft:rgba(41,151,255,.14);
+  }}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{
-    background:var(--bg);color:var(--ink);
-    font-family:var(--sans);font-size:17px;line-height:1.6;letter-spacing:-.01em;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
-  }
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
   ::selection{background:var(--accent);color:#fff}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:980px;margin:0 auto;padding:0 32px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 32px}
 
-  /* theme toggle */
-  .toggle{
-    position:fixed;top:22px;right:24px;z-index:5;
-    font-family:var(--mono);font-size:12px;letter-spacing:.02em;
-    color:var(--muted);background:color-mix(in srgb,var(--bg) 70%,transparent);
-    backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);
-    border:1px solid var(--line);border-radius:980px;padding:8px 15px;cursor:pointer;transition:.25s;
-  }
+  .toggle{position:fixed;top:20px;right:22px;z-index:6;font-family:var(--mono);font-size:12px;color:var(--muted);background:color-mix(in srgb,var(--bg) 68%,transparent);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border:1px solid var(--line);border-radius:980px;padding:8px 15px;cursor:pointer;transition:.25s}
   .toggle:hover{color:var(--ink);border-color:var(--muted)}
 
-  /* section label */
-  .label{
-    display:flex;align-items:center;gap:14px;margin-bottom:44px;
-    font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--muted);
-  }
+  .label{display:flex;align-items:center;gap:14px;margin-bottom:40px;font-family:var(--mono);font-size:12px;color:var(--muted)}
   .label .rule{flex:1;height:1px;background:var(--line)}
 
-  /* HERO */
-  header.hero{display:flex;flex-direction:column;justify-content:center;padding:15vh 0 7vh}
-  .hero .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--accent);margin-bottom:26px}
-  .hero h1{
-    font-weight:600;line-height:1.03;letter-spacing:-.035em;
-    font-size:clamp(56px,11vw,120px);
-    background:linear-gradient(180deg,var(--ink),color-mix(in srgb,var(--ink) 62%,var(--muted)));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .hero .tag{margin-top:34px;max-width:40ch;font-size:clamp(20px,2.6vw,26px);color:var(--ink-soft);line-height:1.5;font-weight:400;letter-spacing:-.02em}
-  .scrollcue{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-  .scrollcue span{display:inline-block;animation:drift 2.4s ease-in-out infinite}
-  @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  header.hero{display:flex;flex-direction:column;justify-content:center;padding:15vh 0 8vh}
+  .hero .eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:26px}
+  .hero h1{font-weight:600;line-height:1.03;letter-spacing:-.035em;font-size:clamp(56px,11vw,116px);background:linear-gradient(180deg,var(--ink),color-mix(in srgb,var(--ink) 60%,var(--muted)));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .tag{margin-top:32px;max-width:42ch;font-size:clamp(20px,2.5vw,25px);color:var(--ink-soft);line-height:1.5;font-weight:400;letter-spacing:-.02em}
 
-  section{padding:64px 0}
+  section{padding:60px 0}
 
-  /* ABOUT */
-  .about p{font-size:clamp(24px,3.4vw,34px);font-weight:500;line-height:1.45;letter-spacing:-.025em;color:var(--ink);max-width:24ch}
+  .about p{font-size:clamp(23px,3.2vw,33px);font-weight:500;line-height:1.45;letter-spacing:-.025em;color:var(--ink);max-width:24ch}
   .about p + p{margin-top:1.1em;font-size:18px;font-weight:400;color:var(--ink-soft);max-width:60ch;line-height:1.65;letter-spacing:-.01em}
   .about strong{color:var(--ink);font-weight:600}
 
-  /* WORKS list */
-  .work{
-    display:grid;grid-template-columns:56px 1fr auto;gap:6px 24px;align-items:baseline;
-    padding:34px 20px;margin:0 -20px;border-top:1px solid var(--line);border-radius:18px;
-    position:relative;transition:background .3s ease,transform .3s ease;
-  }
-  .works .work:last-child{border-bottom:1px solid var(--line)}
+  /* projects */
+  .work{display:grid;grid-template-columns:54px 1fr auto;gap:6px 24px;align-items:baseline;padding:30px 20px;margin:0 -20px;border-top:1px solid var(--line);border-radius:18px;transition:background .3s}
+  .works .work:last-of-type{border-bottom:1px solid var(--line)}
   .work .no{font-family:var(--mono);font-size:13px;color:var(--muted)}
   .work .body{grid-column:2}
-  .work h3{font-weight:600;font-size:clamp(26px,3.8vw,38px);letter-spacing:-.03em;line-height:1.15}
-  .work .desc{margin-top:11px;color:var(--ink-soft);font-size:16px;max-width:56ch;line-height:1.55;font-weight:400}
-  .work .arrow{margin-top:15px;font-family:var(--mono);font-size:13px;color:var(--accent);opacity:0;transform:translateX(-6px);transition:.35s}
+  .work h3{font-weight:600;font-size:clamp(25px,3.6vw,35px);letter-spacing:-.03em;line-height:1.15}
+  .work .desc{margin-top:10px;color:var(--ink-soft);font-size:16px;max-width:58ch;line-height:1.55}
+  .work .arrow{margin-top:13px;font-family:var(--mono);font-size:13px;color:var(--accent);opacity:0;transform:translateX(-6px);transition:.35s}
   .work .meta{grid-column:3;text-align:right;font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap;line-height:1.7}
   .work .meta .star{color:var(--accent)}
   .work:hover{background:var(--bg-2)}
   .work:hover .arrow{opacity:1;transform:translateX(0)}
   .work:hover h3{color:var(--accent)}
-  @media (max-width:640px){
-    .work{grid-template-columns:34px 1fr;padding:26px 16px;margin:0 -16px}
-    .work .meta{grid-column:2;grid-row:3;text-align:left;margin-top:12px}
-  }
+  @media (max-width:640px){.work{grid-template-columns:32px 1fr;padding:24px 14px;margin:0 -14px}.work .meta{grid-column:2;text-align:left;margin-top:10px}}
+  .also{margin-top:26px;font-size:15px;color:var(--muted);line-height:1.9}
+  .also a{color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  .also a:hover{color:var(--accent);border-color:var(--accent)}
 
-  /* STUDIOS */
-  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .col{padding:32px;border:1px solid var(--line);border-radius:22px;background:var(--bg-2)}
-  .col .cen{font-weight:600;font-size:23px;letter-spacing:-.03em}
+  /* demos */
+  .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .demo{grid-column:span 1;border:1px solid var(--line);border-radius:22px;background:var(--bg-2);padding:22px;overflow:hidden}
+  .demo.wide{grid-column:span 2}
+  @media (max-width:720px){.dgrid{grid-template-columns:1fr}.demo,.demo.wide{grid-column:span 1}}
+  .dhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .dhead h4{font-weight:600;font-size:19px;letter-spacing:-.02em}
+  .dtag{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:980px;padding:4px 10px;white-space:nowrap}
+  .cap{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.55}
+  .cap a{color:var(--accent)}
+  canvas{display:block;width:100%;border-radius:12px}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+  .btn{font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--bg-3);border:1px solid var(--line);border-radius:980px;padding:8px 14px;cursor:pointer;transition:.2s;-webkit-appearance:none;appearance:none}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.ghost{background:transparent}
+  .btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.pri:hover{filter:brightness(1.08);color:#fff}
+  select.btn{padding-right:26px}
+
+  /* ble demo */
+  .ble-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:stretch}
+  @media (max-width:520px){.ble-grid{grid-template-columns:1fr}}
+  #bleRadar{height:250px;background:radial-gradient(circle at 50% 50%,var(--bg-3),var(--bg-2))}
+  .ble-list{display:flex;flex-direction:column;gap:8px;min-height:250px;max-height:250px;overflow:auto}
+  .ble-empty{color:var(--muted);font-family:var(--mono);font-size:12px;margin:auto;text-align:center}
+  .dev{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);cursor:pointer;transition:.2s}
+  .dev:hover{border-color:var(--accent)}
+  .dev .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .dev .nm{font-weight:600;font-size:14px}
+  .dev .rssi{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .dev .bar{height:4px;border-radius:3px;background:var(--line);margin-top:8px;overflow:hidden}
+  .dev .bar i{display:block;height:100%;background:var(--accent);border-radius:3px;transition:width .4s}
+  .dev .gatt{margin-top:9px;font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7;display:none}
+  .dev.open .gatt{display:block}
+  .dev .gatt b{color:var(--ink-soft);font-weight:600}
+
+  /* sorting */
+  #sortCv{height:210px;background:var(--bg-3)}
+  /* enc */
+  #encIn{width:100%;font-family:var(--sans);font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;outline:none;transition:.2s}
+  #encIn:focus{border-color:var(--accent)}
+  .enc-out{margin-top:12px;min-height:74px;font-family:var(--mono);font-size:13px;line-height:1.75;color:var(--accent);word-break:break-all;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .enc-key{margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--muted);word-break:break-all}
+  .enc-key b{color:var(--ink-soft)}
+
+  /* studios */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .col{padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--bg-2)}
+  .col .cen{font-weight:600;font-size:22px;letter-spacing:-.03em}
   .col .csub{font-family:var(--mono);font-size:12px;color:var(--muted);margin:5px 0 16px}
-  .col p{font-size:15px;color:var(--ink-soft);margin-bottom:20px;line-height:1.55}
+  .col p{font-size:15px;color:var(--ink-soft);margin-bottom:18px;line-height:1.55}
   .col ul{list-style:none}
   .col li{padding:11px 0;border-top:1px solid var(--line-soft);font-size:15px;display:flex;justify-content:space-between;gap:12px;transition:.2s}
   .col li:hover{color:var(--accent)}
   .col li .k{color:var(--muted);font-family:var(--mono);font-size:12px}
   @media (max-width:640px){.cols{grid-template-columns:1fr}}
 
-  /* FOOTER */
-  footer{padding:96px 0 80px;border-top:1px solid var(--line)}
-  .foot-links{display:flex;flex-wrap:wrap;gap:16px 36px;margin-top:28px}
-  .foot-links a{font-weight:600;font-size:24px;letter-spacing:-.03em;transition:.2s}
+  footer{padding:80px 0 70px;border-top:1px solid var(--line);margin-top:20px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:16px 36px;margin-top:26px}
+  .foot-links a{font-weight:600;font-size:23px;letter-spacing:-.03em;transition:.2s}
   .foot-links a:hover{color:var(--accent)}
-  .colophon{margin-top:56px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9}
+  .colophon{margin-top:52px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9}
 
-  /* reveal */
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scrollcue span{animation:none}}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 
-<button class="toggle" id="toggle" aria-label="Toggle theme">Dark</button>
+<button class="toggle" id="toggle">Dark</button>
 
 <div class="wrap">
 
   <header class="hero">
     <div class="eyebrow reveal">Selected Works</div>
     <h1 class="reveal">Elijah&nbsp;Couch</h1>
-    <p class="tag reveal">Rust engineer building cross-platform systems, developer tools, and real-time graphics — from GPU renderers to a VR engine.</p>
+    <p class="tag reveal">Rust engineer building cross-platform systems, real-time graphics, and low-level tooling — from a GPU renderer to a Bluetooth stack.</p>
   </header>
 
   <section class="about">
     <div class="label reveal"><span>About</span><span class="rule"></span></div>
     <p class="reveal">I build software close to the metal — mostly in Rust.</p>
-    <p class="reveal">My work spans two studios: <strong>Ramp&nbsp;Stack</strong>, a cross-platform Rust application and graphics stack, and <strong>Space&nbsp;Soup&nbsp;VR</strong>, a WGPU-powered 3D engine that runs on the Meta&nbsp;Quest. I care most about the layer where design meets systems — clean abstractions, real-time rendering, and tools other people build on. I also work across the stack in React, Python, and Java when a product needs it.</p>
+    <p class="reveal">My work spans two studios: <strong>Ramp&nbsp;Stack</strong>, a cross-platform Rust application and graphics stack, and <strong>Space&nbsp;Soup&nbsp;VR</strong>, a WGPU-powered 3D engine that runs on the Meta&nbsp;Quest. I like the layer where design meets systems — clean abstractions, real-time rendering, talking to hardware directly, and tools other people build on. A few things below are interactive.</p>
   </section>
 
   <section class="works">
     <div class="label reveal"><span>Projects</span><span class="rule"></span></div>
 
-    <a class="work reveal" href="https://github.com/ramp-stack/wgpu_canvas">
+    <a class="work reveal" href="https://github.com/ramp-stack/maverick_os/tree/ble">
       <div class="no">01</div>
+      <div class="body"><h3>Bluetooth LE stack</h3>
+        <div class="desc">A from-scratch Bluetooth Low Energy stack in Rust, talking to Apple's CoreBluetooth directly through objc2 FFI. Central and peripheral roles — scanning devices (name, RSSI, services) and advertising custom GATT characteristics — plus device-to-device sharing on macOS and iOS.</div>
+        <div class="arrow">View source →</div></div>
+      <div class="meta">RUST · FFI<br>BLE</div>
+    </a>
+
+    <a class="work reveal" href="https://github.com/ramp-stack/wgpu_canvas">
+      <div class="no">02</div>
       <div class="body"><h3>wgpu_canvas</h3>
         <div class="desc">A pure-Rust GPU canvas built directly on wgpu (WebGPU) — shapes, textures, and cached text with zero JavaScript. Runs on desktop and the web.</div>
-        <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">Rust<br><span class="star">★ 7</span></div>
+        <div class="arrow">View source →</div></div>
+      <div class="meta">RUST<br><span class="star">★ 7</span></div>
     </a>
 
     <a class="work reveal" href="https://github.com/ramp-stack/quartz">
-      <div class="no">02</div>
+      <div class="no">03</div>
       <div class="body"><h3>Quartz</h3>
         <div class="desc">A 2D game engine written in Rust — the graphics framework behind the Ramp stack, and what the rampstudio editor is built on.</div>
-        <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">Rust<br><span class="star">★ 3</span></div>
+        <div class="arrow">View source →</div></div>
+      <div class="meta">RUST<br><span class="star">★ 3</span></div>
     </a>
 
     <a class="work reveal" href="https://github.com/SpaceSoupVR/space_soup">
-      <div class="no">03</div>
+      <div class="no">04</div>
       <div class="body"><h3>Space Soup</h3>
         <div class="desc">A 3D and 2D rendering engine powered by WGPU, targeting the Meta Quest through OpenXR and Vulkan — with a scene editor and its own engine layer.</div>
-        <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">Rust · VR</div>
+        <div class="arrow">View source →</div></div>
+      <div class="meta">RUST · VR</div>
+    </a>
+
+    <a class="work reveal" href="https://github.com/ramp-stack/air">
+      <div class="no">05</div>
+      <div class="body"><h3>air</h3>
+        <div class="desc">A decentralized, end-to-end encrypted messaging and identity protocol in async Rust — secp256k1 keys, ChaCha20-Poly1305 encryption, and a name system, running over Tokio and WebSockets.</div>
+        <div class="arrow">View source →</div></div>
+      <div class="meta">RUST · CRYPTO</div>
     </a>
 
     <a class="work reveal" href="https://github.com/ramp-stack/maverick_os">
-      <div class="no">04</div>
+      <div class="no">06</div>
       <div class="body"><h3>maverick_os</h3>
-        <div class="desc">The platform layer beneath the Ramp stack — abstracts OS and hardware services so the engine and UI stay portable across targets.</div>
-        <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">Rust · Systems</div>
+        <div class="desc">The cross-platform layer beneath the Ramp stack — one Rust API over camera, haptics, push notifications, clipboard, sharing, and Bluetooth, across macOS, iOS, and Android.</div>
+        <div class="arrow">View source →</div></div>
+      <div class="meta">RUST · SYSTEMS</div>
     </a>
 
     <a class="work reveal" href="https://github.com/ramp-stack/pelican_ui">
-      <div class="no">05</div>
-      <div class="body"><h3>pelican_ui</h3>
-        <div class="desc">A cross-platform UI framework in Rust — the interface toolkit used across Ramp applications.</div>
-        <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">Rust · UI</div>
-    </a>
-
-    <a class="work reveal" href="https://github.com/ElijahNCouch/vultrax">
-      <div class="no">06</div>
-      <div class="body"><h3>vultrax</h3>
-        <div class="desc">A WGPU + OpenXR game engine — real-time rendering aimed at VR.</div>
-        <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">Rust · OpenXR</div>
-    </a>
-
-    <a class="work reveal" href="https://github.com/ElijahNCouch/rampstudio">
       <div class="no">07</div>
-      <div class="body"><h3>rampstudio</h3>
-        <div class="desc">A friendly code editor built with Quartz and the Ramp stack — dogfooding the whole toolchain in a real app.</div>
-        <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">Rust<br><span class="star">★ 2</span></div>
+      <div class="body"><h3>pelican_ui &middot; prism</h3>
+        <div class="desc">A cross-platform UI stack in Rust — prism supplies the low-level layout, rendering, and event primitives on top of wgpu_canvas; pelican_ui is the design system built on it.</div>
+        <div class="arrow">View source →</div></div>
+      <div class="meta">RUST · UI</div>
     </a>
 
+    <div class="also reveal">Also &mdash;
+      <a href="https://github.com/ElijahNCouch/system18">system18</a> (a 24/7 trading bot),
+      <a href="https://github.com/ElijahNCouch/bevy_qrcode">bevy_qrcode</a>,
+      <a href="https://github.com/ElijahNCouch/sorting_music">sorting_music</a>,
+      <a href="https://github.com/ElijahNCouch/spritesheet_gif_converter">spritesheet_gif_converter</a>,
+      and more on <a href="https://github.com/ElijahNCouch">GitHub</a>.
+    </div>
+  </section>
+
+  <section class="playground">
+    <div class="label reveal"><span>Playground &mdash; a few things running live</span><span class="rule"></span></div>
+    <div class="dgrid">
+
+      <div class="demo wide reveal">
+        <div class="dhead"><h4>Nearby devices</h4><span class="dtag">maverick_os · ble</span></div>
+        <div class="ble-grid">
+          <canvas id="bleRadar"></canvas>
+          <div class="ble-list" id="bleList"><div class="ble-empty">Press Scan to discover<br>nearby BLE devices</div></div>
+        </div>
+        <div class="controls">
+          <button class="btn pri" id="bleScan">Scan</button>
+          <button class="btn ghost" id="bleClear">Clear</button>
+        </div>
+        <p class="cap">A simulation of the BLE central scanner — it discovers devices with a name, RSSI (signal strength, in dBm) and services; tap one to see its GATT characteristics. The real stack does this from Rust through CoreBluetooth. <a href="https://github.com/ramp-stack/maverick_os/tree/ble">Source →</a></p>
+      </div>
+
+      <div class="demo reveal">
+        <div class="dhead"><h4>Sorting, out loud</h4><span class="dtag">sorting_music</span></div>
+        <canvas id="sortCv"></canvas>
+        <div class="controls">
+          <button class="btn pri" id="sortRun">Sort</button>
+          <button class="btn ghost" id="sortShuffle">Shuffle</button>
+          <select class="btn" id="sortAlgo"><option value="bubble">Bubble</option><option value="insertion">Insertion</option><option value="selection">Selection</option></select>
+          <button class="btn ghost" id="sortSound">Sound: on</button>
+        </div>
+        <p class="cap">A rebuild of my Python sorting visualizer — bars animate as they sort and each comparison plays a tone. <a href="https://github.com/ElijahNCouch/sorting_music">Source →</a></p>
+      </div>
+
+      <div class="demo reveal">
+        <div class="dhead"><h4>Encrypted channel</h4><span class="dtag">air</span></div>
+        <input id="encIn" value="hello from the metal" spellcheck="false" aria-label="Message to encrypt">
+        <div class="enc-out" id="encOut"></div>
+        <div class="enc-key">key&nbsp; <b id="encKey"></b></div>
+        <div class="controls"><button class="btn ghost" id="encRotate">Rotate key</button></div>
+        <p class="cap">air secures messages with secp256k1 keys and ChaCha20-Poly1305. This is an illustrative keystream — type and watch it encrypt. <a href="https://github.com/ramp-stack/air">Source →</a></p>
+      </div>
+
+    </div>
   </section>
 
   <section class="collections">
@@ -210,13 +270,13 @@
       <div class="col">
         <div class="cen">Ramp Stack</div>
         <div class="csub">github.com/ramp-stack</div>
-        <p>A cross-platform Rust application &amp; graphics stack — engine, UI, platform layer, and tooling.</p>
+        <p>A cross-platform Rust application &amp; graphics stack — engine, UI, platform layer, comms, and tooling.</p>
         <ul>
           <li><span>Quartz</span><span class="k">2D engine</span></li>
           <li><span>wgpu_canvas</span><span class="k">GPU canvas</span></li>
-          <li><span>pelican_ui</span><span class="k">UI</span></li>
-          <li><span>maverick_os</span><span class="k">platform</span></li>
-          <li><span>prism · chk · air</span><span class="k">crates</span></li>
+          <li><span>prism · pelican_ui</span><span class="k">UI</span></li>
+          <li><span>maverick_os</span><span class="k">platform · BLE</span></li>
+          <li><span>air</span><span class="k">encrypted comms</span></li>
         </ul>
       </div>
       <div class="col">
@@ -241,31 +301,149 @@
       <a href="https://github.com/ramp-stack">ramp-stack</a>
       <a href="https://github.com/SpaceSoupVR">Space Soup VR</a>
     </div>
-    <div class="colophon">
-      Elijah Couch — built in Rust, mostly.<br>
-      © 2026
-    </div>
+    <div class="colophon">Elijah Couch — built in Rust, mostly.<br>© 2026</div>
   </footer>
 
 </div>
 
 <script>
-  const root=document.documentElement, t=document.getElementById('toggle');
+(function(){
+  // ---------- theme ----------
+  const root=document.documentElement, tg=document.getElementById('toggle');
   const saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved);
-  function sync(){
-    const cur=root.getAttribute('data-theme')
-      || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-    t.textContent = cur==='dark' ? 'Light' : 'Dark';
-  }
-  sync();
-  t.addEventListener('click',()=>{
-    const cur=root.getAttribute('data-theme')
-      || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-    const next=cur==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next); localStorage.setItem('theme',next); sync();
-  });
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*55)+'ms';io.observe(el)});
+  const curTheme=()=>root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  const syncTg=()=>tg.textContent=curTheme()==='dark'?'Light':'Dark'; syncTg();
+  tg.addEventListener('click',()=>{const n=curTheme()==='dark'?'light':'dark';root.setAttribute('data-theme',n);localStorage.setItem('theme',n);syncTg();});
+  const css=v=>getComputedStyle(document.body).getPropertyValue(v).trim();
+
+  // ---------- reveal ----------
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*55)+'ms';io.observe(el);});
+
+  function fit(cv,h){const r=cv.getBoundingClientRect();const dpr=Math.min(devicePixelRatio||1,2);cv.width=Math.max(1,r.width*dpr);cv.height=Math.max(1,(h||r.height)*dpr);const x=cv.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);return {x,w:r.width,h:h||r.height};}
+
+  // ================= BLE scanner =================
+  (function(){
+    const cv=document.getElementById('bleRadar'), list=document.getElementById('bleList');
+    if(!cv) return;
+    const NAMES=['iPhone','MacBook Pro','AirPods Pro','Quest 3','iPad','Apple Watch','Pixel Buds','HomePod','Unknown'];
+    let g=fit(cv,250), devices=[], sweep=0, scanning=false, raf=0, spawnT=0;
+    addEventListener('resize',()=>{g=fit(cv,250);});
+    function hexUUID(){const h='0123456789ABCDEF';let s='';for(let i=0;i<4;i++)s+=h[Math.floor(Math.random()*16)];return '6E40'+s+'-B5A3-F393-E0A9-'+Date.now().toString(16).slice(-8).toUpperCase();}
+    function rndName(){return NAMES[Math.floor(Math.random()*NAMES.length)];}
+    function spawn(){
+      if(devices.length>=6) return;
+      const dist=.28+Math.random()*.64, ang=Math.random()*Math.PI*2;
+      devices.push({name:rndName(),ang,dist,rssi:Math.round(-30-dist*60),found:false,pulse:0,
+        uuid:hexUUID(),chars:[['Shared','Read · Write · Notify'],['Custom','Read']]});
+    }
+    function draw(){
+      const {x,w,h}=g, cx=w/2, cy=h/2, R=Math.min(w,h)/2-14;
+      x.clearRect(0,0,w,h);
+      x.strokeStyle=css('--line'); x.lineWidth=1;
+      for(let i=1;i<=3;i++){x.beginPath();x.arc(cx,cy,R*i/3,0,Math.PI*2);x.stroke();}
+      x.beginPath();x.moveTo(cx-R,cy);x.lineTo(cx+R,cy);x.moveTo(cx,cy-R);x.lineTo(cx,cy+R);x.globalAlpha=.5;x.stroke();x.globalAlpha=1;
+      if(scanning){
+        const ac=css('--accent');
+        const grad=x.createConicGradient?x.createConicGradient(sweep,cx,cy):null;
+        if(grad){grad.addColorStop(0,ac+'00');grad.addColorStop(.06,ac+'55');grad.addColorStop(.12,ac+'00');grad.addColorStop(1,ac+'00');
+          x.fillStyle=grad;x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,R,0,Math.PI*2);x.fill();}
+        x.strokeStyle=ac;x.globalAlpha=.9;x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(sweep)*R,cy+Math.sin(sweep)*R);x.stroke();x.globalAlpha=1;
+      }
+      devices.forEach(d=>{
+        if(!d.found) return;
+        const px=cx+Math.cos(d.ang)*d.dist*R, py=cy+Math.sin(d.ang)*d.dist*R;
+        if(d.pulse>0){x.globalAlpha=d.pulse*.4;x.fillStyle=css('--accent');x.beginPath();x.arc(px,py,10*(1.3-d.pulse),0,Math.PI*2);x.fill();x.globalAlpha=1;d.pulse-=.03;}
+        x.fillStyle=css('--accent');x.beginPath();x.arc(px,py,4,0,Math.PI*2);x.fill();
+      });
+      x.fillStyle=css('--muted');x.beginPath();x.arc(cx,cy,3,0,Math.PI*2);x.fill();
+    }
+    function renderList(){
+      if(!devices.some(d=>d.found)){list.innerHTML='<div class="ble-empty">'+(scanning?'Scanning…':'Press Scan to discover<br>nearby BLE devices')+'</div>';return;}
+      const found=devices.filter(d=>d.found).sort((a,b)=>b.rssi-a.rssi);
+      list.innerHTML=found.map((d,i)=>{
+        const pct=Math.max(4,Math.min(100,Math.round((d.rssi+90)/60*100)));
+        return `<div class="dev" data-i="${i}">
+          <div class="row1"><span class="nm">${d.name}</span><span class="rssi">${d.rssi} dBm</span></div>
+          <div class="bar"><i style="width:${pct}%"></i></div>
+          <div class="gatt"><b>service</b> ${d.uuid}<br>${d.chars.map(c=>`<b>${c[0]}</b> ${c[1]}`).join('<br>')}</div>
+        </div>`;}).join('');
+      list.querySelectorAll('.dev').forEach(el=>el.addEventListener('click',()=>el.classList.toggle('open')));
+      list._found=found;
+    }
+    function loop(t){
+      if(scanning){
+        sweep+=.045;
+        if(t-spawnT>700+Math.random()*700){spawnT=t;spawn();}
+        let changed=false;
+        devices.forEach(d=>{if(!d.found){let da=((sweep-d.ang)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);if(da<.12){d.found=true;d.pulse=1;changed=true;}}});
+        if(changed) renderList();
+      }
+      draw(); raf=requestAnimationFrame(loop);
+    }
+    document.getElementById('bleScan').addEventListener('click',e=>{
+      scanning=!scanning; e.target.textContent=scanning?'Stop':'Scan'; e.target.classList.toggle('pri',!scanning); e.target.classList.toggle('ghost',scanning);
+      if(scanning&&!devices.some(d=>d.found)) renderList();
+    });
+    document.getElementById('bleClear').addEventListener('click',()=>{devices=[];renderList();});
+    renderList(); raf=requestAnimationFrame(loop);
+  })();
+
+  // ================= sorting =================
+  (function(){
+    const cv=document.getElementById('sortCv'); if(!cv) return;
+    const N=44; let arr=[], g=fit(cv,210), hi=[-1,-1], playing=false, raf=0, ac=null, sound=true;
+    addEventListener('resize',()=>{g=fit(cv,210);draw();});
+    function shuffle(){arr=Array.from({length:N},(_,i)=>i+1);for(let i=N-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}hi=[-1,-1];draw();}
+    function draw(){const {x,w,h}=g;x.clearRect(0,0,w,h);const bw=w/N;
+      for(let i=0;i<N;i++){const bh=arr[i]/N*(h-10);x.fillStyle=(i===hi[0]||i===hi[1])?css('--accent'):css('--muted');x.globalAlpha=(i===hi[0]||i===hi[1])?1:.5;x.fillRect(i*bw+1,h-bh,bw-2,bh);}x.globalAlpha=1;}
+    function beep(v){if(!sound)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),gn=ac.createGain();o.frequency.value=180+v/N*720;o.type='sine';gn.gain.value=.05;o.connect(gn);gn.connect(ac.destination);o.start();gn.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+.06);o.stop(ac.currentTime+.07);}catch(e){}}
+    function frames(kind){const a=arr.slice(),f=[];const snap=(i,j)=>f.push({a:a.slice(),i,j});
+      if(kind==='bubble'){for(let i=0;i<N-1;i++)for(let j=0;j<N-1-i;j++){snap(j,j+1);if(a[j]>a[j+1]){[a[j],a[j+1]]=[a[j+1],a[j]];snap(j,j+1);}}}
+      else if(kind==='insertion'){for(let i=1;i<N;i++){let j=i;while(j>0&&a[j-1]>a[j]){snap(j-1,j);[a[j-1],a[j]]=[a[j],a[j-1]];snap(j-1,j);j--;}}}
+      else{for(let i=0;i<N-1;i++){let m=i;for(let j=i+1;j<N;j++){snap(m,j);if(a[j]<a[m])m=j;}if(m!==i){[a[i],a[m]]=[a[m],a[i]];snap(i,m);}}}
+      return f;}
+    function run(){
+      if(playing)return; playing=true;
+      const f=frames(document.getElementById('sortAlgo').value); let k=0;
+      const step=Math.max(1,Math.floor(f.length/260));
+      (function tick(){
+        for(let s=0;s<step&&k<f.length;s++,k++){const fr=f[k];arr=fr.a;hi=[fr.i,fr.j];}
+        if(k<f.length){beep(arr[hi[0]]||1);draw();raf=requestAnimationFrame(tick);}
+        else{hi=[-1,-1];draw();playing=false;}
+      })();
+    }
+    document.getElementById('sortRun').addEventListener('click',()=>{if(ac&&ac.state==='suspended')ac.resume();run();});
+    document.getElementById('sortShuffle').addEventListener('click',()=>{if(!playing)shuffle();});
+    document.getElementById('sortSound').addEventListener('click',e=>{sound=!sound;e.target.textContent='Sound: '+(sound?'on':'off');});
+    shuffle();
+  })();
+
+  // ================= encrypt =================
+  (function(){
+    const inp=document.getElementById('encIn'), out=document.getElementById('encOut'), keyEl=document.getElementById('encKey');
+    if(!inp) return;
+    let key=[]; const HEX='0123456789abcdef';
+    function newKey(){key=Array.from({length:32},()=>Math.floor(Math.random()*256));keyEl.textContent=key.map(b=>b.toString(16).padStart(2,'0')).join('');}
+    function cipher(){const t=inp.value;const res=[];for(let i=0;i<t.length;i++){res.push((t.charCodeAt(i)^key[i%key.length]^(i*37&0xff))&0xff);}return res;}
+    let animTok=0;
+    function render(){
+      const target=cipher(); const tok=++animTok; let step=0;
+      (function frame(){
+        if(tok!==animTok)return;
+        out.textContent=target.map((b,i)=>{
+          if(i<=step) return b.toString(16).padStart(2,'0');
+          return HEX[Math.floor(Math.random()*16)]+HEX[Math.floor(Math.random()*16)];
+        }).join(' ');
+        if(step<target.length){step+=2;requestAnimationFrame(frame);}
+      })();
+    }
+    inp.addEventListener('input',render);
+    document.getElementById('encRotate').addEventListener('click',()=>{newKey();render();});
+    newKey(); render();
+  })();
+
+})();
 </script>
 </body>
 </html>
