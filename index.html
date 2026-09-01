@@ -3,238 +3,214 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Elijah Couch — 作品集</title>
+<title>Elijah Couch — Selected Works</title>
 <meta name="description" content="Elijah Couch — Rust engineer building cross-platform systems and real-time graphics.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f4f1ea'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23b23a2e'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230071e3'/%3E%3Ctext x='50' y='69' font-family='-apple-system,Segoe UI,sans-serif' font-size='58' font-weight='600' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
 <style>
   :root{
-    --paper:#f4f1ea; --paper-2:#efeadf;
-    --ink:#1c1a17; --ink-soft:#524d45; --muted:#8a8377;
-    --line:#d9d3c6; --line-soft:#e6e0d4;
-    --shu:#b23a2e;            /* 朱 vermilion accent */
-    --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Songti SC",Georgia,serif;
-    --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    --bg:#fbfbfd; --bg-2:#f5f5f7;
+    --ink:#1d1d1f; --ink-soft:#424245; --muted:#6e6e73;
+    --line:#d2d2d7; --line-soft:#e8e8ed;
+    --accent:#0071e3;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,"JetBrains Mono",Consolas,monospace;
   }
   :root[data-theme="dark"]{
-    --paper:#17150f; --paper-2:#1d1a13;
-    --ink:#ece7db; --ink-soft:#b7b0a1; --muted:#7d766a;
-    --line:#332f26; --line-soft:#2a271f;
-    --shu:#d1533f;
+    --bg:#000000; --bg-2:#0d0d0f;
+    --ink:#f5f5f7; --ink-soft:#c7c7cc; --muted:#86868b;
+    --line:#2a2a2c; --line-soft:#1c1c1e;
+    --accent:#2997ff;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --paper:#17150f; --paper-2:#1d1a13;
-      --ink:#ece7db; --ink-soft:#b7b0a1; --muted:#7d766a;
-      --line:#332f26; --line-soft:#2a271f;
-      --shu:#d1533f;
+      --bg:#000000; --bg-2:#0d0d0f;
+      --ink:#f5f5f7; --ink-soft:#c7c7cc; --muted:#86868b;
+      --line:#2a2a2c; --line-soft:#1c1c1e;
+      --accent:#2997ff;
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
-    background:var(--paper);color:var(--ink);
-    font-family:var(--sans);font-size:16px;line-height:1.85;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-    overflow-x:hidden;
+    background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;letter-spacing:-.01em;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
   }
-  ::selection{background:var(--shu);color:#fff}
+  ::selection{background:var(--accent);color:#fff}
   a{color:inherit;text-decoration:none}
-
-  .wrap{max-width:940px;margin:0 auto;padding:0 32px}
-
-  /* vertical kanji rail (desktop) */
-  .rail{
-    position:fixed;top:0;right:26px;height:100vh;display:flex;align-items:center;
-    writing-mode:vertical-rl;font-family:var(--serif);letter-spacing:.55em;
-    font-size:15px;color:var(--muted);pointer-events:none;z-index:2;
-  }
-  .rail .dot{color:var(--shu)}
-  @media (max-width:1120px){.rail{display:none}}
+  .wrap{max-width:980px;margin:0 auto;padding:0 32px}
 
   /* theme toggle */
   .toggle{
-    position:fixed;top:26px;right:26px;z-index:5;
-    font-family:var(--mono);font-size:11px;letter-spacing:.15em;
-    color:var(--muted);background:transparent;border:1px solid var(--line);
-    border-radius:999px;padding:7px 13px;cursor:pointer;transition:.25s;
+    position:fixed;top:22px;right:24px;z-index:5;
+    font-family:var(--mono);font-size:12px;letter-spacing:.02em;
+    color:var(--muted);background:color-mix(in srgb,var(--bg) 70%,transparent);
+    backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);
+    border:1px solid var(--line);border-radius:980px;padding:8px 15px;cursor:pointer;transition:.25s;
   }
-  .toggle:hover{color:var(--ink);border-color:var(--ink-soft)}
+  .toggle:hover{color:var(--ink);border-color:var(--muted)}
 
   /* section label */
   .label{
-    display:flex;align-items:baseline;gap:14px;margin-bottom:38px;
-    font-family:var(--mono);font-size:12px;letter-spacing:.24em;
-    text-transform:uppercase;color:var(--muted);
+    display:flex;align-items:center;gap:14px;margin-bottom:44px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--muted);
   }
-  .label .kanji{font-family:var(--serif);font-size:19px;letter-spacing:.14em;color:var(--ink);text-transform:none}
   .label .rule{flex:1;height:1px;background:var(--line)}
 
   /* HERO */
-  header.hero{min-height:96vh;display:flex;flex-direction:column;justify-content:center;position:relative}
-  .hero .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.4em;color:var(--shu);text-transform:uppercase;margin-bottom:30px}
+  header.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center}
+  .hero .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--accent);margin-bottom:26px}
   .hero h1{
-    font-family:var(--serif);font-weight:400;line-height:1.05;
-    font-size:clamp(52px,10vw,104px);letter-spacing:-.01em;
+    font-weight:600;line-height:1.03;letter-spacing:-.035em;
+    font-size:clamp(56px,11vw,120px);
+    background:linear-gradient(180deg,var(--ink),color-mix(in srgb,var(--ink) 62%,var(--muted)));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .hero h1 .jp{display:block;font-size:clamp(20px,3.4vw,30px);letter-spacing:.34em;color:var(--ink-soft);margin-top:22px;font-weight:400}
-  .hero .tag{margin-top:40px;max-width:44ch;font-size:17px;color:var(--ink-soft);line-height:1.9}
-  .hero .seal{
-    position:absolute;top:calc(50% - 168px);right:2%;width:88px;height:88px;border-radius:12px;
-    background:var(--shu);display:flex;align-items:center;justify-content:center;
-    font-family:var(--serif);color:#f7f2ec;font-size:44px;
-    box-shadow:0 12px 40px -18px rgba(178,58,46,.9);transform:rotate(-4deg);
-  }
-  @media (max-width:760px){.hero .seal{width:64px;height:64px;font-size:32px;top:16vh;right:6%}}
-  .scrollcue{margin-top:76px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted)}
+  .hero .tag{margin-top:34px;max-width:40ch;font-size:clamp(20px,2.6vw,26px);color:var(--ink-soft);line-height:1.5;font-weight:400;letter-spacing:-.02em}
+  .scrollcue{margin-top:70px;font-family:var(--mono);font-size:12px;color:var(--muted)}
   .scrollcue span{display:inline-block;animation:drift 2.4s ease-in-out infinite}
   @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
-  section{padding:96px 0}
+  section{padding:100px 0}
 
   /* ABOUT */
-  .about p{font-size:clamp(19px,2.5vw,24px);font-family:var(--serif);line-height:1.95;color:var(--ink);max-width:34ch}
-  .about p + p{margin-top:1.4em;font-size:16px;font-family:var(--sans);color:var(--ink-soft);max-width:56ch;line-height:1.95}
+  .about p{font-size:clamp(24px,3.4vw,34px);font-weight:500;line-height:1.45;letter-spacing:-.025em;color:var(--ink);max-width:24ch}
+  .about p + p{margin-top:1.1em;font-size:18px;font-weight:400;color:var(--ink-soft);max-width:60ch;line-height:1.65;letter-spacing:-.01em}
+  .about strong{color:var(--ink);font-weight:600}
 
   /* WORKS list */
   .work{
-    display:grid;grid-template-columns:64px 1fr auto;gap:8px 26px;align-items:baseline;
-    padding:30px 0;border-top:1px solid var(--line);position:relative;
-    text-decoration:none;transition:.4s cubic-bezier(.2,.7,.2,1);
+    display:grid;grid-template-columns:56px 1fr auto;gap:6px 24px;align-items:baseline;
+    padding:34px 20px;margin:0 -20px;border-top:1px solid var(--line);border-radius:18px;
+    position:relative;transition:background .3s ease,transform .3s ease;
   }
   .works .work:last-child{border-bottom:1px solid var(--line)}
-  .work .no{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.05em}
+  .work .no{font-family:var(--mono);font-size:13px;color:var(--muted)}
   .work .body{grid-column:2}
-  .work h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3.6vw,34px);letter-spacing:.01em;line-height:1.2}
-  .work h3 .en{color:var(--ink)}
-  .work .desc{margin-top:9px;color:var(--ink-soft);font-size:15px;max-width:52ch}
-  .work .meta{grid-column:3;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
-  .work .meta .star{color:var(--shu)}
-  .work .arrow{grid-column:2;margin-top:14px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--shu);opacity:0;transform:translateX(-6px);transition:.4s}
-  .work:hover{padding-left:14px}
+  .work h3{font-weight:600;font-size:clamp(26px,3.8vw,38px);letter-spacing:-.03em;line-height:1.15}
+  .work .desc{margin-top:11px;color:var(--ink-soft);font-size:16px;max-width:56ch;line-height:1.55;font-weight:400}
+  .work .arrow{margin-top:15px;font-family:var(--mono);font-size:13px;color:var(--accent);opacity:0;transform:translateX(-6px);transition:.35s}
+  .work .meta{grid-column:3;text-align:right;font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap;line-height:1.7}
+  .work .meta .star{color:var(--accent)}
+  .work:hover{background:var(--bg-2)}
   .work:hover .arrow{opacity:1;transform:translateX(0)}
-  .work:hover h3 .en{color:var(--shu)}
+  .work:hover h3{color:var(--accent)}
   @media (max-width:640px){
-    .work{grid-template-columns:38px 1fr}
-    .work .meta{grid-column:2;grid-row:3;text-align:left;margin-top:10px}
-    .work .arrow{display:none}
+    .work{grid-template-columns:34px 1fr;padding:26px 16px;margin:0 -16px}
+    .work .meta{grid-column:2;grid-row:3;text-align:left;margin-top:12px}
   }
 
-  /* COLLECTIONS */
-  .cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
-  .col{padding:34px 34px 40px;border:1px solid var(--line)}
-  .col + .col{border-left:none}
-  .col .cjp{font-family:var(--serif);font-size:26px;letter-spacing:.12em}
-  .col .cen{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin:6px 0 16px}
-  .col p{font-size:14.5px;color:var(--ink-soft);margin-bottom:22px}
+  /* STUDIOS */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .col{padding:32px;border:1px solid var(--line);border-radius:22px;background:var(--bg-2)}
+  .col .cen{font-weight:600;font-size:23px;letter-spacing:-.03em}
+  .col .csub{font-family:var(--mono);font-size:12px;color:var(--muted);margin:5px 0 16px}
+  .col p{font-size:15px;color:var(--ink-soft);margin-bottom:20px;line-height:1.55}
   .col ul{list-style:none}
-  .col li{padding:9px 0;border-top:1px solid var(--line-soft);font-size:14.5px;display:flex;justify-content:space-between;gap:12px;transition:.25s}
-  .col li:hover{color:var(--shu);padding-left:8px}
-  .col li .k{color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.05em}
-  @media (max-width:640px){.cols{grid-template-columns:1fr}.col + .col{border-left:1px solid var(--line);border-top:none}}
+  .col li{padding:11px 0;border-top:1px solid var(--line-soft);font-size:15px;display:flex;justify-content:space-between;gap:12px;transition:.2s}
+  .col li:hover{color:var(--accent)}
+  .col li .k{color:var(--muted);font-family:var(--mono);font-size:12px}
+  @media (max-width:640px){.cols{grid-template-columns:1fr}}
 
   /* FOOTER */
-  footer{padding:90px 0 70px;border-top:1px solid var(--line)}
-  .foot-links{display:flex;flex-wrap:wrap;gap:14px 40px;margin-top:28px}
-  .foot-links a{font-family:var(--serif);font-size:22px;position:relative}
-  .foot-links a .u{display:block;height:1px;background:var(--shu);width:0;transition:.35s}
-  .foot-links a:hover .u{width:100%}
-  .colophon{margin-top:60px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);line-height:2}
+  footer{padding:96px 0 80px;border-top:1px solid var(--line)}
+  .foot-links{display:flex;flex-wrap:wrap;gap:16px 36px;margin-top:28px}
+  .foot-links a{font-weight:600;font-size:24px;letter-spacing:-.03em;transition:.2s}
+  .foot-links a:hover{color:var(--accent)}
+  .colophon{margin-top:56px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9}
 
   /* reveal */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scrollcue span{animation:none}}
 </style>
 </head>
 <body>
 
-<div class="rail">作 品 集 <span class="dot">・</span> PORTFOLIO</div>
-<button class="toggle" id="toggle" aria-label="Toggle theme">明 / 暗</button>
+<button class="toggle" id="toggle" aria-label="Toggle theme">Dark</button>
 
 <div class="wrap">
 
   <header class="hero">
-    <div class="seal">作</div>
-    <div class="eyebrow reveal">作品集 — Selected Works</div>
-    <h1 class="reveal">Elijah&nbsp;Couch<span class="jp">エリヤ・カウチ</span></h1>
+    <div class="eyebrow reveal">Selected Works</div>
+    <h1 class="reveal">Elijah&nbsp;Couch</h1>
     <p class="tag reveal">Rust engineer building cross-platform systems, developer tools, and real-time graphics — from GPU renderers to a VR engine.</p>
-    <div class="scrollcue reveal">scroll ↓ 下へ</div>
+    <div class="scrollcue reveal">Scroll <span>↓</span></div>
   </header>
 
   <section class="about">
-    <div class="label reveal"><span class="kanji">概要</span><span>About</span><span class="rule"></span></div>
+    <div class="label reveal"><span>About</span><span class="rule"></span></div>
     <p class="reveal">I build software close to the metal — mostly in Rust.</p>
-    <p class="reveal">My work spans two studios: <strong>Ramp&nbsp;Stack</strong>, a cross-platform Rust application and graphics stack, and <strong>Space&nbsp;Soup&nbsp;VR</strong>, a WGPU-powered 3D engine that runs on the Meta&nbsp;Quest. I care most about the layer where design meets systems — clean abstractions, real-time rendering, and tools that other people build on. I also work across the stack in React, Python, and Java when a product needs it.</p>
+    <p class="reveal">My work spans two studios: <strong>Ramp&nbsp;Stack</strong>, a cross-platform Rust application and graphics stack, and <strong>Space&nbsp;Soup&nbsp;VR</strong>, a WGPU-powered 3D engine that runs on the Meta&nbsp;Quest. I care most about the layer where design meets systems — clean abstractions, real-time rendering, and tools other people build on. I also work across the stack in React, Python, and Java when a product needs it.</p>
   </section>
 
   <section class="works">
-    <div class="label reveal"><span class="kanji">作品</span><span>Selected Works</span><span class="rule"></span></div>
+    <div class="label reveal"><span>Projects</span><span class="rule"></span></div>
 
     <a class="work reveal" href="https://github.com/ramp-stack/wgpu_canvas">
       <div class="no">01</div>
-      <div class="body"><h3><span class="en">wgpu_canvas</span></h3>
+      <div class="body"><h3>wgpu_canvas</h3>
         <div class="desc">A pure-Rust GPU canvas built directly on wgpu (WebGPU) — shapes, textures, and cached text with zero JavaScript. Runs on desktop and the web.</div>
         <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">RUST<br><span class="star">★ 7</span></div>
+      <div class="meta">Rust<br><span class="star">★ 7</span></div>
     </a>
 
     <a class="work reveal" href="https://github.com/ramp-stack/quartz">
       <div class="no">02</div>
-      <div class="body"><h3><span class="en">Quartz</span></h3>
+      <div class="body"><h3>Quartz</h3>
         <div class="desc">A 2D game engine written in Rust — the graphics framework behind the Ramp stack, and what the rampstudio editor is built on.</div>
         <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">RUST<br><span class="star">★ 3</span></div>
+      <div class="meta">Rust<br><span class="star">★ 3</span></div>
     </a>
 
     <a class="work reveal" href="https://github.com/SpaceSoupVR/space_soup">
       <div class="no">03</div>
-      <div class="body"><h3><span class="en">Space Soup</span></h3>
+      <div class="body"><h3>Space Soup</h3>
         <div class="desc">A 3D and 2D rendering engine powered by WGPU, targeting the Meta Quest through OpenXR and Vulkan — with a scene editor and its own engine layer.</div>
         <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">RUST · VR</div>
+      <div class="meta">Rust · VR</div>
     </a>
 
     <a class="work reveal" href="https://github.com/ramp-stack/maverick_os">
       <div class="no">04</div>
-      <div class="body"><h3><span class="en">maverick_os</span></h3>
+      <div class="body"><h3>maverick_os</h3>
         <div class="desc">The platform layer beneath the Ramp stack — abstracts OS and hardware services so the engine and UI stay portable across targets.</div>
         <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">RUST · SYSTEMS</div>
+      <div class="meta">Rust · Systems</div>
     </a>
 
     <a class="work reveal" href="https://github.com/ramp-stack/pelican_ui">
       <div class="no">05</div>
-      <div class="body"><h3><span class="en">pelican_ui</span></h3>
+      <div class="body"><h3>pelican_ui</h3>
         <div class="desc">A cross-platform UI framework in Rust — the interface toolkit used across Ramp applications.</div>
         <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">RUST · UI</div>
+      <div class="meta">Rust · UI</div>
     </a>
 
     <a class="work reveal" href="https://github.com/ElijahNCouch/vultrax">
       <div class="no">06</div>
-      <div class="body"><h3><span class="en">vultrax</span></h3>
+      <div class="body"><h3>vultrax</h3>
         <div class="desc">A WGPU + OpenXR game engine — real-time rendering aimed at VR.</div>
         <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">RUST · OPENXR</div>
+      <div class="meta">Rust · OpenXR</div>
     </a>
 
     <a class="work reveal" href="https://github.com/ElijahNCouch/rampstudio">
       <div class="no">07</div>
-      <div class="body"><h3><span class="en">rampstudio</span></h3>
+      <div class="body"><h3>rampstudio</h3>
         <div class="desc">A friendly code editor built with Quartz and the Ramp stack — dogfooding the whole toolchain in a real app.</div>
         <div class="arrow">View on GitHub →</div></div>
-      <div class="meta">RUST<br><span class="star">★ 2</span></div>
+      <div class="meta">Rust<br><span class="star">★ 2</span></div>
     </a>
 
   </section>
 
   <section class="collections">
-    <div class="label reveal"><span class="kanji">工房</span><span>The Studios</span><span class="rule"></span></div>
+    <div class="label reveal"><span>Studios</span><span class="rule"></span></div>
     <div class="cols reveal">
       <div class="col">
-        <div class="cjp">Ramp Stack</div>
-        <div class="cen">ramp-stack</div>
+        <div class="cen">Ramp Stack</div>
+        <div class="csub">github.com/ramp-stack</div>
         <p>A cross-platform Rust application &amp; graphics stack — engine, UI, platform layer, and tooling.</p>
         <ul>
           <li><span>Quartz</span><span class="k">2D engine</span></li>
@@ -245,8 +221,8 @@
         </ul>
       </div>
       <div class="col">
-        <div class="cjp">Space Soup</div>
-        <div class="cen">SpaceSoupVR</div>
+        <div class="cen">Space Soup VR</div>
+        <div class="csub">github.com/SpaceSoupVR</div>
         <p>A WGPU 3D engine for the Meta Quest — rendering, engine, editor, and on-headset app.</p>
         <ul>
           <li><span>space_soup</span><span class="k">renderer</span></li>
@@ -260,33 +236,37 @@
   </section>
 
   <footer>
-    <div class="label"><span class="kanji">連絡先</span><span>Elsewhere</span><span class="rule"></span></div>
+    <div class="label"><span>Elsewhere</span><span class="rule"></span></div>
     <div class="foot-links">
-      <a href="https://github.com/ElijahNCouch">GitHub<span class="u"></span></a>
-      <a href="https://github.com/ramp-stack">ramp-stack<span class="u"></span></a>
-      <a href="https://github.com/SpaceSoupVR">Space Soup VR<span class="u"></span></a>
+      <a href="https://github.com/ElijahNCouch">GitHub</a>
+      <a href="https://github.com/ramp-stack">ramp-stack</a>
+      <a href="https://github.com/SpaceSoupVR">Space Soup VR</a>
     </div>
     <div class="colophon">
-      作 · Elijah Couch — built in Rust, mostly.<br>
-      © 2026 · 完
+      Elijah Couch — built in Rust, mostly.<br>
+      © 2026
     </div>
   </footer>
 
 </div>
 
 <script>
-  // theme toggle (persists)
   const root=document.documentElement, t=document.getElementById('toggle');
   const saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved);
+  function sync(){
+    const cur=root.getAttribute('data-theme')
+      || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    t.textContent = cur==='dark' ? 'Light' : 'Dark';
+  }
+  sync();
   t.addEventListener('click',()=>{
     const cur=root.getAttribute('data-theme')
       || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
     const next=cur==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next); localStorage.setItem('theme',next);
+    root.setAttribute('data-theme',next); localStorage.setItem('theme',next); sync();
   });
-  // reveal on scroll
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*60)+'ms';io.observe(el)});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*55)+'ms';io.observe(el)});
 </script>
 </body>
 </html>
