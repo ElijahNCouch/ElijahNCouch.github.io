@@ -1,0 +1,11 @@
+[application]
+
+[web.app]
+title = "Elijah Couch — Selected Works"
+base_path = ""
+
+[web.watcher]
+
+[web.resource]
+
+[web.resource.dev]

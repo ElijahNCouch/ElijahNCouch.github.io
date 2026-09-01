@@ -1,0 +1,35 @@
+[package]
+name = "portfolio"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dioxus = { version = "0.6", features = ["web"] }
+wasm-bindgen = "=0.2.99"
+js-sys = "=0.3.76"
+
+[dependencies.web-sys]
+version = "=0.3.76"
+features = [
+  "Window", "Document", "Element", "HtmlElement", "HtmlCanvasElement", "HtmlInputElement",
+  "CanvasRenderingContext2d", "CanvasGradient", "DomRect", "CssStyleDeclaration", "DomTokenList",
+  "Storage", "MediaQueryList",
+  "AudioContext", "AudioContextState", "AudioDestinationNode",
+  "OscillatorNode", "OscillatorType", "GainNode", "AudioParam",
+]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
