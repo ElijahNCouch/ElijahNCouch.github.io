@@ -41,6 +41,7 @@
   .label .rule{flex:1;height:1px;background:var(--line)}
 
   header.hero{display:flex;flex-direction:column;justify-content:center;padding:15vh 0 8vh}
+  .hero .avatar{width:104px;height:104px;border-radius:26px;object-fit:cover;object-position:center 22%;margin-bottom:30px;border:1px solid var(--line);box-shadow:0 14px 40px -16px rgba(0,0,0,.45)}
   .hero .eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:26px}
   .hero h1{font-weight:600;line-height:1.03;letter-spacing:-.035em;font-size:clamp(56px,11vw,116px);background:linear-gradient(180deg,var(--ink),color-mix(in srgb,var(--ink) 60%,var(--muted)));-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero .tag{margin-top:32px;max-width:42ch;font-size:clamp(20px,2.5vw,25px);color:var(--ink-soft);line-height:1.5;font-weight:400;letter-spacing:-.02em}
@@ -144,6 +145,7 @@
 <div class="wrap">
 
   <header class="hero">
+    <img class="avatar reveal" src="pfp.jpg" alt="Elijah Couch" width="104" height="104">
     <div class="eyebrow reveal">Selected Works</div>
     <h1 class="reveal">Elijah&nbsp;Couch</h1>
     <p class="tag reveal">Rust engineer building cross-platform systems, real-time graphics, and low-level tooling — from a GPU renderer to a Bluetooth stack.</p>
