@@ -58,7 +58,7 @@
   .label .rule{flex:1;height:1px;background:var(--line)}
 
   /* HERO */
-  header.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center}
+  header.hero{display:flex;flex-direction:column;justify-content:center;padding:18vh 0 10vh}
   .hero .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--accent);margin-bottom:26px}
   .hero h1{
     font-weight:600;line-height:1.03;letter-spacing:-.035em;
@@ -67,11 +67,11 @@
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .hero .tag{margin-top:34px;max-width:40ch;font-size:clamp(20px,2.6vw,26px);color:var(--ink-soft);line-height:1.5;font-weight:400;letter-spacing:-.02em}
-  .scrollcue{margin-top:70px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .scrollcue{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)}
   .scrollcue span{display:inline-block;animation:drift 2.4s ease-in-out infinite}
   @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
-  section{padding:100px 0}
+  section{padding:64px 0}
 
   /* ABOUT */
   .about p{font-size:clamp(24px,3.4vw,34px);font-weight:500;line-height:1.45;letter-spacing:-.025em;color:var(--ink);max-width:24ch}
